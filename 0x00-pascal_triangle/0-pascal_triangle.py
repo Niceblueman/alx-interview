@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""_summary_"""
 
 def pascal_triangle(n):
     """_summary_
