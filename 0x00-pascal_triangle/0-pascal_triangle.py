@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""_summary_"""
+"""pascal triangle"""
 
 def pascal_triangle(n):
-    """_summary_
+    """pascal triangle
 
     Args:
         n (int): pascal triangle rows count
