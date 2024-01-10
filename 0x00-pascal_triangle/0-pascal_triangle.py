@@ -1,6 +1,14 @@
 #!/usr/bin/python3
 
 def pascal_triangle(n):
+    """_summary_
+
+    Args:
+        n (int): pascal triangle rows count
+
+    Returns:
+        list[list[int]]: pascal triangle
+    """
     if n <= 0:
         return []
     triangle = [[1]]
