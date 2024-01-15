@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" lock boxes puzzle """
+"""lock boxes puzzle"""
 
 
 def canUnlockAll(boxes):
@@ -25,7 +25,8 @@ def canUnlockAll(boxes):
         if keys:
             for key in keys:
                 try:
-                    if opened_boxes.get(key) and opened_boxes.get(key).get('status') == 'opened/checked':
+                    if opened_boxes.get(key) and opened_boxes.get(
+                            key).get('status') == 'opened/checked':
                         continue
                     opened_boxes[key] = {
                         'status': 'opened',
