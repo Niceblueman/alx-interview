@@ -15,15 +15,15 @@ To generate Pascal's triangle and run the provided unit tests, follow these step
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/Niceblueman/alx-interview.git
    ```
 
-   Replace `your-username` and `your-repository` with your actual GitHub username and repository name.
+   Replace `Niceblueman` and `your-repository` with your actual GitHub username and repository name.
 
 2. Navigate to the project directory:
 
    ```bash
-   cd your-repository
+   cd alx-interview
    ```
 
 3. Run the unit tests:
