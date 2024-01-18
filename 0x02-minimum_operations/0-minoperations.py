@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""
-Minimum Operations module
+"""Minimum Operations module
 """
 
 
 def minOperations(n):
-    """
-    Calculates the fewest number of operations needed to result in exactly n H characters.
+    """Calculates the fewest number of operations needed to result in exactly n H characters.
     """
     if not isinstance(n, int) or n < 2:
         return 0
