@@ -38,10 +38,11 @@ for line in sys.stdin:
     try:
         parts = line.split()
         ip_address = parts[0]
-        status_code = int(parts[-2])
+        status_code = parts[-2]
         file_size = int(parts[-1])
         total_file_size += file_size
-        status_code_counts[status_code] += 1
+        if (status_code in [str(a) for a in status_code_counts.keys()]):
+            status_code_counts[int(status_code)] += 1
         line_count += 1
         if line_count % 10 == 0:
             print_stats()
