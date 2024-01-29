@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""
-    _summary_
-"""
 import random
 import sys
 from time import sleep

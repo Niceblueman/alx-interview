@@ -1,54 +1,52 @@
 #!/usr/bin/python3
+"""
+_summary_
+"""
 
 import sys
-
-
-def print_msg(dict_sc, total_file_size):
-    """
-    Method to print
-    Args:
-        dict_sc: dict of status codes
-        total_file_size: total of the file
-    Returns:
-        Nothing
-    """
-
-    print("File size: {}".format(total_file_size))
-    for key, val in sorted(dict_sc.items()):
-        if val != 0:
-            print("{}: {}".format(key, val))
-
+import signal
 
 total_file_size = 0
-code = 0
-counter = 0
-dict_sc = {"200": 0,
-           "301": 0,
-           "400": 0,
-           "401": 0,
-           "403": 0,
-           "404": 0,
-           "405": 0,
-           "500": 0}
+status_code_counts = {200: 0, 301: 0, 400: 0,
+                      401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+line_count = 0
 
-try:
-    for line in sys.stdin:
-        parsed_line = line.split()  # ✄ trimming
-        parsed_line = parsed_line[::-1]  # inverting
 
-        if len(parsed_line) > 2:
-            counter += 1
+def signal_handler(sig, frame):
+    """_summary_
 
-            if counter <= 10:
-                total_file_size += int(parsed_line[0])  # file size
-                code = parsed_line[1]  # status code
+    Args:
+        sig (_type_): _description_
+        frame (_type_): _description_
+    """
+    print_stats()
+    sys.exit(0)
 
-                if (code in dict_sc.keys()):
-                    dict_sc[code] += 1
 
-            if (counter == 10):
-                print_msg(dict_sc, total_file_size)
-                counter = 0
+def print_stats():
+    """_summary_
+    """
+    print(f"File size: {total_file_size}")
+    for code in sorted(status_code_counts.keys()):
+        count = status_code_counts[code]
+        if count > 0:
+            print(f"{code}: {count}")
 
-finally:
-    print_msg(dict_sc, total_file_size)
+
+signal.signal(signal.SIGINT, signal_handler)
+for line in sys.stdin:
+    try:
+        parts = line.split()
+        ip_address = parts[0]
+        status_code = int(parts[-2])
+        file_size = int(parts[-1])
+        total_file_size += file_size
+        status_code_counts[status_code] += 1
+        line_count += 1
+        if line_count % 10 == 0:
+            print_stats()
+
+    except (IndexError, ValueError):
+        continue
+
+print_stats()
