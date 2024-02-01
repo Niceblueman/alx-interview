@@ -3,6 +3,12 @@
 
 
 def validUTF8(bytes):
+    """validate supposed utf8 data 
+    Args:
+        bytes (list[int]): _description_
+    Returns:
+        bool: if Valid utf8
+    """
     def char_length(bytes):
         char_count = 0
         i = 0
