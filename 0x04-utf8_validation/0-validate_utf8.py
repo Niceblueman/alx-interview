@@ -3,30 +3,12 @@
 
 
 def validUTF8(bytes):
-    """validate supposed utf8 data 
-
-    Args:
-        bytes (list[int]): _description_
-
-    Returns:
-        bool: if Valid utf8
-    """
     def char_length(bytes):
-        """_summary_
-
-        Args:
-            bytes (_type_): _description_
-
-        Returns:
-            _type_: _description_
-        """
         char_count = 0
         i = 0
 
         while i < len(bytes):
             char_count += 1
-
-            # Lead byte analysis
             if bytes[i] & 0b10000000 == 0b00000000:
                 i += 1
                 continue
@@ -42,8 +24,6 @@ def validUTF8(bytes):
                 expected_len = 6
             else:
                 return -1
-
-            # Count trailing bytes
             while expected_len > 1:
                 i += 1
                 if i >= len(bytes):
@@ -53,6 +33,5 @@ def validUTF8(bytes):
                 expected_len -= 1
 
             i += 1
-
         return char_count
     return char_length(bytes) != -1
