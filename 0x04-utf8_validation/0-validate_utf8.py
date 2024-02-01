@@ -5,7 +5,7 @@ utf-8 validation function
 
 
 def validUTF8(bytes):
-    """validate supposed utf8 data 
+    """validate supposed utf8 data
     Args:
         bytes (list[int]): _description_
     Returns:
