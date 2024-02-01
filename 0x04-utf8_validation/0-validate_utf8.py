@@ -11,8 +11,6 @@ def validUTF8(data):
     Returns:
         bool: if Valid utf8
     """
-    if not data:
-        return False
     size = 0
     for char in data:
         if size == 0 and char >> 7 == 0b0:
