@@ -26,10 +26,6 @@ def validUTF8(bytes):
                 expected_len = 3
             elif bytes[i] & 0b11111000 == 0b11110000:
                 expected_len = 4
-            elif bytes[i] & 0b11111100 == 0b11111000:
-                expected_len = 5
-            elif bytes[i] & 0b11111110 == 0b11111100:
-                expected_len = 6
             else:
                 return -1
             while expected_len > 1:
