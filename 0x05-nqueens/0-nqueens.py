@@ -1,13 +1,13 @@
 
 #!/usr/bin/python3
-"""_summary_"""
+"""_summary_
+"""
 
 import sys
 
 
 def print_solution(solution):
     """_summary_
-
     Args:
         solution (_type_): _description_
     """
@@ -18,7 +18,6 @@ def print_solution(solution):
 
 def is_safe(board, row, col):
     """_summary_
-
     Args:
         board (_type_): _description_
         row (_type_): _description_
@@ -37,7 +36,6 @@ def is_safe(board, row, col):
 
 def solve_nqueens(board, row, n):
     """_summary_
-
     Args:
         board (_type_): _description_
         row (_type_): _description_
@@ -55,7 +53,6 @@ def solve_nqueens(board, row, n):
 
 def nqueens(n):
     """_summary_
-
     Args:
         n (_type_): _description_
     """
