@@ -8,18 +8,18 @@ async function starwarsCharacters (filmId) {
     const filmResponse = await request(endpoint);
     const film = JSON.parse(filmResponse.body);
     const characters = film.characters;
-
-    const characterRequests = characters.map(async (urlCharacter) => {
+    const results = [];
+    const characterRequests = characters.map(async (urlCharacter, i) => {
       try {
         const characterResponse = await request(urlCharacter);
         const character = JSON.parse(characterResponse.body);
-        console.log(character.name);
+        results[i] = character.name;
       } catch (characterError) {
         console.error(`Error fetching character: ${urlCharacter}`, characterError.message);
       }
     });
-
     await Promise.all(characterRequests);
+    results.map(name => console.log(name));
   } catch (filmError) {
     console.error(`Error fetching film details: ${filmId}`, filmError.message);
   }
