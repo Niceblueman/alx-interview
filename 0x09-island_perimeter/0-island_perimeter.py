@@ -4,12 +4,14 @@
 
 
 def island_perimeter(grid):
-    """island_perimeter
+    """
+    island_perimeter
     Args:
         grid list[list[int]]: mutilevel_list
     Returns:
         int: perimiter
     """
+
     return sum(4 - (grid[i - 1][j] if i > 0 and grid[i - 1][j] == 1 else 0)
                - (grid[i][j - 1] if j > 0 and grid[i][j - 1] == 1 else 0)
                - (grid[i + 1][j] if i < len(grid) -
