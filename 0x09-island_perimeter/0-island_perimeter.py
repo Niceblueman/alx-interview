@@ -4,9 +4,9 @@
 
 
 def island_perimeter(grid):
-    """island_perimeter 👿
+    """island_perimeter
     Args:
-        grid list[list[int]]: mutilevel list
+        grid list[list[int]]: mutilevel_list
     Returns:
         int: perimiter
     """
