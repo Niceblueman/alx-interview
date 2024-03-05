@@ -1,17 +1,12 @@
 #!/usr/bin/python3
 """Island Perimeter Problem in one line
-    - Add 4 for each land cell
-    - Subtract 2 for each adjacent land cell vertically
-    - Subtract 2 for each adjacent land cell horizontally
 """
 
 
 def island_perimeter(grid):
     """island_perimeter 👿
-
     Args:
         grid list[list[int]]: mutilevel list
-
     Returns:
         int: perimiter
     """
