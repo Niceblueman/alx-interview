@@ -1,40 +1,59 @@
 #!/usr/bin/python3
-"""Prime Game - Maria and Ben are playing a game"""
+""" 0-prime_game.py """
 
 
 def is_prime(num):
-    if num <= 1:
+    """ check for prime number"""
+    if num == 0 or num == 1 or (num % 2 == 0 and num > 2):
         return False
-    for i in range(2, int(num ** 0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
+    else:
+        for i in range(3, int(num ** 0.5) + 2):
+            if num % i == 0:
+                return False
+        return True
 
 
-def get_primes(n):
+def is_round_winner(n, x):
+    """ checks the round winner """
+    list = [i for i in range(1, n + 1)]
+    players = ['Maria', 'Ben']
 
-    primes = []
-    for i in range(2, n + 1):
-        if is_prime(i):
-            primes.append(i)
-    return primes
+    for i in range(n):
+        current_player = players[i % 2]
+        nums_selected = []
+        prime = -1
+        for idx, num in enumerate(list):
+            if prime != -1:
+                if num % prime == 0:
+                    nums_selected.append(idx)
+            else:
+                if is_prime(num):
+                    nums_selected.append(idx)
+                    prime = num
+
+        if prime == -1:
+            if current_player == players[0]:
+                return players[1]
+            else:
+                return players[0]
+        else:
+            for i, val in enumerate(nums_selected):
+                del list[val - i]
+    return None
 
 
 def isWinner(x, nums):
-    maria_wins = 0
-    ben_wins = 0
+    """ returns the winner """
+    counter = {'Maria': 0, 'Ben': 0}
 
-    for n in nums:
-        primes = get_primes(n)
-        total_primes = len(primes)
-        if total_primes % 2 == 0:
-            ben_wins += 1
-        else:
-            maria_wins += 1
+    for i in range(x):
+        round_winner = is_round_winner(nums[i], x)
+        if round_winner is not None:
+            counter[round_winner] += 1
 
-    if maria_wins == ben_wins:
-        return None
-    elif maria_wins > ben_wins:
-        return "Maria"
+    if counter['Maria'] > counter['Ben']:
+        return 'Maria'
+    elif counter['Ben'] > counter['Maria']:
+        return 'Ben'
     else:
-        return "Ben"
+        return None
